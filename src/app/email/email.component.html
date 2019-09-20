@@ -1,0 +1,23 @@
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="card bg-light">
+
+    <div class="card-header">
+      <h3 class="text-center" >{{user.name}}</h3>
+    </div>
+
+    <div class="card-body">
+
+      	<div class="row justify-content-around">
+      		{{user.email}}
+      	</div>
+
+      	<div class="row justify-content-around" style="margin-top: 20px">
+      		<button type="cancel" class="btn btn-secondary" (click)="close()"><i class="fa fa-times"></i> Cancel</button>
+      		<a class="btn btn-primary" [href]="'mailto:' + user.email + '?subject=Question on a '+name+'&body=Hello,%0D%0A %0D%0A I have a question about this following '+name+' : %0D%0A' + description+'%0D%0A %0D%0A Thank you for your help, %0D%0A %0D%0A'+user.name"><i class="fa fa-envelope" aria-hidden="true"></i> Contact</a>
+      	</div>
+
+    </div>
+  </div>
+</ng-template>
+
+<a href="javascript:void(0)" (click)="open(content)">{{nameUser}}</a>

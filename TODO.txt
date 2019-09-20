@@ -1,0 +1,27 @@
+﻿TODO :
+- Ajouter des images aux incidents
+- Notification de réponse d'alerte sur chaque action
+- token security entre le site et la bdd
+- Système de pagination sur le dashboard
+- Ajouter une traduction automatique en francais
+- Faire le service de mot de passe oublié
+
+DOING :
+- Ajouter des commentaires dans le code
+- affiche les dernière lieu utilisé dans la sélection de lieu
+
+DONE :
+- lieu par défaut par user
+- Affiche que les mishap concerné, ou tout afficher si admin
+- Ne pas afficher toutes les places
+- Modal détails user
+- Trier les incidents
+- Recherche dynamique
+- Ajouter des places
+- Rechercher dans incicents
+- par défaut severity
+- obligatoire severity + place
+- visualisation d'un incident
+- ajouter un incident
+- dashboard
+- connexion + session

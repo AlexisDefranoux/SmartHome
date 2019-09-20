@@ -1,0 +1,80 @@
+<div class="row justify-content-center">
+
+  <div class="col-md-12">
+
+    <div class="card bg-light">
+      <div class="card-header">
+        <h3 class="text-center" >Mishap details</h3>
+      </div>
+
+      <div class="card-body">
+
+        <form #detailsMishapForm="ngForm">
+
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body row">
+                  <b class="col-md-4">Place : </b><span class="col-md-8">{{mishap.place}}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body row">
+                  <b class="col-md-4">State : </b><span class="col-md-8">{{mishap.state}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body row">
+                  <b class="col-md-4">Mishap date : </b><span class="col-md-8">{{mishap.mishapDate | date:'dd/MM/yyyy hh:mm'}}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6" *ngIf="mishap.idSeverity !== 4">
+              <div class="card">
+                <div class="card-body row">
+                  <b class="col-md-4">Severity : </b><span class="col-md-8"><span [ngClass]="{'badge badge-danger' : mishap.idSeverity == 1, 'badge badge-warning' : mishap.idSeverity == 2, 'badge badge-secondary' : mishap.idSeverity}">{{mishap.severity}}</span></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6" *ngIf="mishap.idSeverity == 4">
+              <div class="card">
+                <div class="card-body row">
+                  <b class="col-md-4">End date : </b>
+                  <span *ngIf="mishap.resolveDate == null" class="col-md-8">Activated until change</span>
+                  <span *ngIf="mishap.idSeverity != null" class="col-md-8">{{mishap.resolveDate| date:'dd/MM/yyyy hh:mm'}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card mb-3">
+            <div class="card-header"><b>Description : </b></div>
+            <div class = "card-body">
+              <p class="card-text">{{mishap.description}}</p>
+            </div>
+          </div>
+
+          <div class="row justify-content-around">
+            <button type="" class="btn btn-secondary col-md-2" (click)="goBack()"><i class="fa fa-chevron-left"></i> Go back</button>
+          </div>
+
+        </form>
+
+        <div class="blockquote-footer text-right">Created by <app-email [idUser]="mishap.idUser" [idMishap]="mishap.idMishap" [nameUser]="mishap.user"></app-email> the {{mishap.createDate | date:'dd/MM/yyyy hh:mm'}}</div>
+      </div>
+    </div>
+
+    <app-task></app-task>
+
+  </div>
+</div>

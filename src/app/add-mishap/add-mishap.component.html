@@ -1,0 +1,63 @@
+<div class="row justify-content-center">
+
+  <div class="col-md-12">
+
+    <div class="card bg-light">
+      <div class="card-header">
+        <h3 class="text-center" >Describe your mishap</h3>
+      </div>
+
+      <div class="card-body">
+
+        <div class="alert alert-danger" role="alert" [hidden]="!errorSubmit">Failed to create the mishap.</div>
+
+        <form #addMishapForm="ngForm">
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="place">Place *</label>
+              <select [(ngModel)]="mishap.idPlace" class="form-control" id="place" name="place" #place="ngModel">
+                <option [selected]="place.idPlace == placeService.defaultPlace.idPlace" [ngValue]="place.idPlace" *ngFor="let place of places" >{{place.name}}</option>
+              </select>
+              <app-add-place></app-add-place>
+            </div>
+
+            <div class="form-group col-md-6">
+              <label for="severity">Severity *</label>
+              <select [(ngModel)]="mishap.idSeverity" class="form-control" id="severity" name="severity" #severity="ngModel" >
+                <option [selected]="severity.name == 'Low'" [ngValue]="severity.idSeverity" *ngFor="let severity of severities" >{{severity.name}}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="mishapDate">Date</label>
+              <input type="datetime-local" class="form-control" id="mishapDate" name="mishapDate" [ngModel] ="mishap.mishapDate | date:'yyyy-MM-ddThh:mm'" (ngModelChange)="mishap.mishapDate = $event" >
+            </div>
+
+            <div class="form-group col-md-6">
+              <label for="state">State</label>
+              <input type="text" class="form-control" id="state" placeholder="{{state}}" disabled >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="description">Description *</label>
+            <textarea required type="text" class="form-control" id="description"  [(ngModel)]="mishap.description" name="description" rows="5"></textarea>
+          </div>
+
+          <div class="form-group">
+            <p class="text-right text-danger">* Mandatory</p>
+          </div>
+
+          <div class="row justify-content-around">
+            <button type="button" class="btn btn-secondary col-md-2" (click)="goBack()"><i class="fa fa-times"></i> Cancel</button>
+            <button type="submit" [disabled]="addMishapForm.invalid" class="btn btn-primary col-md-2"(click)="add()"><i class="fa fa-check"></i> Add</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="row justify-content-center">
+
+  <div class="col-md-6">
+
+    <div class="card bg-light">
+      <div class="card-header">
+        <h3 class="text-center" >Connection</h3>
+      </div>
+      <div class="card-body">
+
+        <div class="alert alert-danger" role="alert" [hidden]="!loginError">Incorrect email or password.</div>
+
+        <form #connectionForm="ngForm">
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input required [(ngModel)]="user.email" type="email" class="form-control" id="email" placeholder="Enter your email" name="email" #email="ngModel">
+            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">Email is required</div>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input required type="password" class="form-control" id="password" placeholder="Enter your password" [(ngModel)]="user.password" name="password" #password="ngModel">
+            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">Password is required</div>
+          </div>
+
+          <div class="text-center">
+            <button type="submit" [disabled]="connectionForm.invalid" class="btn btn-primary" (click)="submit()"><i class="fa fa-check"></i> Log in</button>
+          </div>
+          <!--<div class="text-right"><a href="sad">Forgot password ?</a></div>-->
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

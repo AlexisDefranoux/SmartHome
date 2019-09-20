@@ -1,0 +1,10 @@
+{
+	"fcst_day_0":{
+		"tmin":8,
+		"tmax":21
+	},
+	"fcst_day_1":{
+		"tmin":12,
+		"tmax":28
+	},
+}

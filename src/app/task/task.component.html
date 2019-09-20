@@ -1,0 +1,11 @@
+<div class="card bg-light mt-3 ml-3 mr-3" *ngFor="let task of tasks">
+  <div class="card-header">
+    <b>Task for : </b><span *ngFor="let user of task.users"><span *ngIf="task.users[0] != user">, </span><app-email [idUser]="user.idUser" [idMishap]="-1" [idTask]="task.idTask" [nameUser]="user.name"></app-email></span>
+  </div>
+
+  <div class="card-body">
+    {{task.description}}
+    <div class="blockquote-footer text-right">Created by <app-email [idUser]="task.idUser" [idMishap]="-1" [idTask]="task.idTask" [nameUser]="task.author"></app-email> the {{task.createDate | date:'dd/MM/yyyy hh:mm'}}</div>
+  </div>
+</div>
+

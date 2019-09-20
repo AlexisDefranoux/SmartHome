@@ -1,0 +1,55 @@
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="card bg-light">
+
+    <div class="card-header">
+      <h3 class="text-center" >Create a mode</h3>
+    </div>
+
+    <div class="card-body">
+
+      <div class="alert alert-danger" role="alert" [hidden]="!errorSubmit">The place already exists.</div>
+
+      <form #addPlaceMishap="ngForm">
+
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <label for="label">Name *</label>
+            <input required type="text" [(ngModel)]="mode.label" class="form-control" id="label" placeholder="Enter The new place" name="label" #name="ngModel">
+            <div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-danger">Place is required</div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="tMin">Minimum temperature (°C) *</label>
+            <select [(ngModel)]="mode.tMin" class="form-control" id="tMin" name="tMin" #place="ngModel" required>
+              <option [selected]="temperatures[0]" [ngValue]="tMin" *ngFor="let tMin of temperatures" >{{tMin}}</option>
+            </select>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="mode">Maximum temperature (°C) *</label>
+            <select [(ngModel)]="mode.tMax" class="form-control" id="mode" name="place" #place="ngModel" required>
+              <option [selected]="temperatures[0]" [ngValue]="tMax" *ngFor="let tMax of temperatures" >{{tMax}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row justify-content-around">
+          <div class="text-center">
+            <button type="cancel" class="btn btn-secondary" (click)="close()"><i class="fa fa-times"></i> Cancel</button>
+          </div>
+
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary" [disabled]="addPlaceMishap.invalid" (click)="add();"><i class="fa fa-check"></i>Submit</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</ng-template>
+
+<a href="javascript:void(0)" (click)="open(content)">Add an inexistant mode ?</a>
+
+

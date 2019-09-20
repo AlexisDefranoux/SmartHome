@@ -1,0 +1,77 @@
+<div class="row justify-content-center">
+  <div class="col-md-12">
+    <div class="card bg-light">
+      <div class="card-header">
+        <h3 class="text-center" >Heaters manager</h3>
+      </div>
+      <div class="card-body">
+
+
+        <!--<div class="row justify-content-center">-->
+          <!--<div class="col-md-12">-->
+            <!--<div class="card bg-light">-->
+              <!--<div class="card-header">-->
+                <!--<h3 class="text-center" >Mode</h3>-->
+              <!--</div>-->
+
+              <!--<div class="card-body">-->
+
+                <div class="alert alert-danger" role="alert" [hidden]="!errorSubmit">Failed to manage heaters.</div>
+
+                <form #addMishapAndModeForm="ngForm">
+
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="mode">Mode *</label>
+                      <select [(ngModel)]="mishap.idMode" class="form-control" id="mode" name="place" #place="ngModel" required>
+                        <option [selected]="mode" [ngValue]="mode.idMode" *ngFor="let mode of modeService.modes" >{{mode.label}} ({{mode.tMin}} to {{mode.tMax}}°C)</option>
+                      </select>
+                      <app-add-mode></app-add-mode>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                      <label for="place">Place </label>
+                      <input type="text" class="form-control" id="place" placeholder="{{mishap.place}}" disabled >
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group col-md-12">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="unlimited" [checked]="unlimited" (click)="change()">
+                        <label class="form-check-label" for="unlimited">
+                          Activated until change ?
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-row" *ngIf="!unlimited">
+                    <div class="form-group col-md-6">
+                      <label for="mishapStartDate">Start Date *</label>
+                      <input required type="datetime-local" class="form-control" id="mishapStartDate" name="mishapStartDate" [ngModel] ="mishap.mishapDate | date:'yyyy-MM-ddThh:mm'" (ngModelChange)="mishap.mishapDate = $event" >
+                    </div>
+
+                    <div class="form-group col-md-6">
+                      <label for="mishapEndDate">End Date *</label>
+                      <input required type="datetime-local" class="form-control" id="mishapEndDate" name="mishapEndDate" [ngModel] ="mishap.resolveDate | date:'yyyy-MM-ddThh:mm'" (ngModelChange)="mishap.resolveDate = $event" >
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <p class="text-right text-danger">* Mandatory</p>
+                  </div>
+
+                  <div class="row justify-content-around">
+                    <button type="button" class="btn btn-secondary col-md-2" (click)="goBack()"><i class="fa fa-times"></i> Cancel</button>
+                    <button type="submit" [disabled]="addMishapAndModeForm.invalid" class="btn btn-primary col-md-2"(click)="add()"><i class="fa fa-check"></i> Add</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
